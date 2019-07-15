@@ -4,7 +4,7 @@ import Map from '../components/MapStore';
 export default function Home() {
     return (
         <main>
-            <Map />
+            <Map geojson={""} />
         </main>
     )
 }
