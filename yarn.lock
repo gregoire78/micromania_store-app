@@ -5043,6 +5043,10 @@ lcid@^2.0.0:
   dependencies:
     invert-kv "^2.0.0"
 
+leaflet.markercluster@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/leaflet.markercluster/-/leaflet.markercluster-1.4.1.tgz#b53f2c4f2ca7306ddab1dbb6f1861d5e8aa6c5e5"
+
 leaflet@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.5.1.tgz#9afb9d963d66c870066b1342e7a06f92840f46bf"
@@ -6886,6 +6890,10 @@ react-error-overlay@^5.1.6:
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
+
+react-leaflet-markercluster@^2.0.0-rc3:
+  version "2.0.0-rc3"
+  resolved "https://registry.yarnpkg.com/react-leaflet-markercluster/-/react-leaflet-markercluster-2.0.0-rc3.tgz#8cadfa62eca88fe1fa7b404a81a5b171e6be60f6"
 
 react-leaflet@^2.4.0:
   version "2.4.0"
