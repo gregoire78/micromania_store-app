@@ -9,7 +9,6 @@ export default function MapStore(props) {
         <Map ref={map} center={[46.52863469527167, 2.43896484375]} zoom={6} style={{ width: '100%', height: 'calc(100vh - 50px)', zIndex: "1" }}>
             <ScaleControl position="bottomleft" />
             <TileLayer
-                tileSize={256}
                 minZoom={1}
                 maxZoom={20}
                 attribution='donn&eacute;es &copy; <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>'
