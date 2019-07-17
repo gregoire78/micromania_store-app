@@ -5,3 +5,14 @@
 h1 {
     height: 50px;
 }
+
+.marker-cluster-custom {
+    background: #0055bcd3;
+    border: 3px solid #edededa6;
+    border-radius: 50%;
+    color: #ededed;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+  }
