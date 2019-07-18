@@ -56,7 +56,8 @@ export default function MapStore(props) {
                                 body: JSON.stringify({ url })
                             });
                             const data = await response.json();
-                            popup.target.bindPopup(`
+                            popup.target.getPopup().setContent(`
+                            <div>
                                 ${feature.properties.description}
                                 <br/><b>Adresse</b>
                                 <br/>${data.address}
@@ -66,8 +67,14 @@ export default function MapStore(props) {
                                 <br/>${data.status}
                                 <br/><b>Horaires</b>
                                 <br/>${data.hours.map((d) => { return d.join(' : ') }).join('<br/>')}
-                                <br/><img width="300" src="${data.img}"/>
-                            `)
+                            </div>
+                            <img width="100%" src="${data.img}"/>
+                            `);
+                            const objImg = new Image();
+                            objImg.src = data.img;
+                            objImg.onload = function () {
+                                popup.target.getPopup().update()
+                            }
                         });
                     }
                 }} />}
