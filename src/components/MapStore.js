@@ -56,7 +56,6 @@ export default function MapStore(props) {
                                 body: JSON.stringify({ url })
                             });
                             const data = await response.json();
-                            console.log(data)
                             popup.target.bindPopup(`
                                 ${feature.properties.description}
                                 <br/><b>Adresse</b>
