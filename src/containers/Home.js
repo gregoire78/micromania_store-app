@@ -10,7 +10,7 @@ export default function Home() {
 
     useEffect(() => {
         async function getGeoJson() {
-            const response = await fetch(`http://localhost:3000/v1/geojson`, {
+            const response = await fetch(`//localhost:3000/v1/geojson`, {
                 method: 'GET'
             });
             const data = await response.json();
