@@ -21,3 +21,77 @@ h1 {
 .custom-popup .leaflet-popup-content {
     display: inline-flex;
 }
+
+main {
+    display: grid;
+    grid-template-columns: auto 300px;
+    grid-column-gap: 5px;
+}
+
+main aside {
+    padding-right: 5px;
+    /*overflow-y: overlay;*/
+    overflow-y: auto;
+    height: calc(100vh - 50px);
+}
+
+main aside section {
+    margin-bottom: 30px;
+}
+
+main aside header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+/*main aside p {
+    border: 1px dotted #ddd;
+    padding: 5px;
+    margin: 10px 10px 0 0;
+}*/
+
+footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background: white;
+    width: 300px;
+}
+
+.store {
+    display: grid;
+    grid-template-columns: auto 20px;
+    grid-column-gap: 5px;
+
+    margin: 10px 0;
+    border: 1px dotted #ddd;
+    padding: 5px;
+    display: grid;
+    overflow: hidden;
+}
+
+.store button {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f8ff;
+    border: none;
+    cursor: pointer;
+}
+
+.store button:hover {
+    background-color: #f7552d;
+}
+
+.download-csv-button {
+    border: none;
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 12pt;
+}
+
+.download-csv-button:hover {
+    background: grey;
+    color: wheat;
+}

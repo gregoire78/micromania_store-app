@@ -2,9 +2,17 @@ import React, { useRef } from 'react';
 import L from 'leaflet';
 import { Map, TileLayer, GeoJSON, ScaleControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+/*import { parse as json2csv } from 'json2csv';
+import FileSaver from 'file-saver';*/
+import { addStore } from '../redux';
+import { useDispatch } from 'react-redux';
 
 export default function MapStore(props) {
     const map = useRef(null);
+    const dispatch = useDispatch();
+    const addStoreAction = (csv) => {
+        dispatch(addStore(csv))
+    };
     return (
         <Map
             ref={map}
@@ -56,6 +64,11 @@ export default function MapStore(props) {
                                 body: JSON.stringify({ url })
                             });
                             const data = await response.json();
+                            const objImg = new Image();
+                            objImg.src = data.img;
+                            objImg.onload = function () {
+                                popup.target.getPopup().update()
+                            }
                             popup.target.getPopup().setContent(`
                             <div>
                                 ${feature.properties.description}
@@ -68,13 +81,26 @@ export default function MapStore(props) {
                                 <br/><b>Horaires</b>
                                 <br/>${data.hours.map((d) => { return d.join(' : ') }).join('<br/>')}
                             </div>
-                            <img width="100%" src="${data.img}"/>
+                            <img width="100%" src="${objImg.src}"/>
                             `);
-                            const objImg = new Image();
-                            objImg.src = data.img;
-                            objImg.onload = function () {
-                                popup.target.getPopup().update()
+
+                            data.monday = data.hours[0][1];
+                            data.tuesday = data.hours[1][1];
+                            data.wednesday = data.hours[2][1];
+                            data.thursday = data.hours[3][1];
+                            data.friday = data.hours[4][1];
+                            data.saturday = data.hours[5][1];
+                            data.sunday = data.hours[6][1];
+                            delete data.hours;
+                            delete data.status;
+                            const featureData = {
+                                id: feature.properties.id,
+                                lat: feature.properties.lat,
+                                lon: feature.properties.lon,
+                                link: feature.properties.link
                             }
+                            const csvObj = Object.assign(featureData, data);
+                            addStoreAction(csvObj);
                         });
                     }
                 }} />}

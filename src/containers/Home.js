@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Map from '../components/MapStore';
+import ListStores from '../components/ListStores';
 
 export default function Home() {
 
@@ -22,6 +23,7 @@ export default function Home() {
     return (
         <main>
             <Map geojson={geoJson} />
+            <ListStores />
         </main>
     )
 }

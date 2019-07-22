@@ -8,10 +8,16 @@ const {
     reducer: storesReducer
 } = createSlice({
     slice: "stores",
-    initialState: 0,
+    initialState: [],
     reducers: {
         addStore(state, action) {
-            state.push(action.payload)
+            state = [...state, action.payload]
+            return [...new Set(state.map(a => a.id))].map(id => {
+                return state.find(a => a.id === id);
+            })
+        },
+        deleteStore(state, action) {
+            return state.filter((store) => store.id !== action.payload)
         }
     }
 })
@@ -22,4 +28,7 @@ export const store = configureStore({
     }
 })
 
-export const {addStore} = actions;
+export const {
+    addStore,
+    deleteStore
+} = actions;
