@@ -55,7 +55,7 @@ export default function MapStore(props) {
                             'minWidth': '300'
                         }).on('popupopen', async (popup) => {
                             const url = popup.target.feature.properties.link;
-                            const response = await fetch(`//localhost:3000/v1/store`, {
+                            const response = await fetch(`//${process.env.REACT_APP_API_HOST}/v1/store`, {
                                 method: 'POST',
                                 headers: {
                                     'Accept': 'application/json',
