@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+DEMO : [https://micromania.joncour.tech/](https://micromania.joncour.tech/)
+
+API Project : [https://github.com/gregoire78/micromania_store-api](https://github.com/gregoire78/micromania_store-api)
+
 ## Available Scripts
 
 In the project directory, you can run:
