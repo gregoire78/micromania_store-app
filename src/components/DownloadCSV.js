@@ -14,7 +14,7 @@ export default function MapStore(props) {
         if (stores.length > 0) {
             const csv = json2csv(stores);
             var blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-            FileSaver.saveAs(blob, "store.csv");
+            FileSaver.saveAs(blob, `micromania_stores_${new Date().toISOString()}.csv`);
         }
     }
     return (

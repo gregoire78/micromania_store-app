@@ -13,6 +13,27 @@ export default function MapStore(props) {
     const addStoreAction = (csv) => {
         dispatch(addStore(csv))
     };
+
+    const csvFormatter = (feature, data) => {
+        const featureData = {
+            id: feature.properties.id,
+            lat: feature.properties.lat,
+            lon: feature.properties.lon,
+            link: feature.properties.link,
+            monday: data.hours.length > 0 ? data.hours[0][1] : "",
+            tuesday: data.hours.length > 0 ? data.hours[1][1] : "",
+            wednesday: data.hours.length > 0 ? data.hours[2][1] : "",
+            thursday: data.hours.length > 0 ? data.hours[3][1] : "",
+            friday: data.hours.length > 0 ? data.hours[4][1] : "",
+            saturday: data.hours.length > 0 ? data.hours[5][1] : "",
+            sunday: data.hours.length > 0 ? data.hours[6][1] : "",
+        }
+        const csvObj = Object.assign(featureData, data);
+        delete csvObj.hours;
+        delete csvObj.status;
+        return csvObj;
+    }
+
     return (
         <Map
             ref={map}
@@ -83,24 +104,7 @@ export default function MapStore(props) {
                             </div>
                             <img width="100%" src="${objImg.src}"/>
                             `);
-
-                            data.monday = data.hours[0][1];
-                            data.tuesday = data.hours[1][1];
-                            data.wednesday = data.hours[2][1];
-                            data.thursday = data.hours[3][1];
-                            data.friday = data.hours[4][1];
-                            data.saturday = data.hours[5][1];
-                            data.sunday = data.hours[6][1];
-                            delete data.hours;
-                            delete data.status;
-                            const featureData = {
-                                id: feature.properties.id,
-                                lat: feature.properties.lat,
-                                lon: feature.properties.lon,
-                                link: feature.properties.link
-                            }
-                            const csvObj = Object.assign(featureData, data);
-                            addStoreAction(csvObj);
+                            addStoreAction(csvFormatter(feature, data));
                         });
                     }
                 }} />}
